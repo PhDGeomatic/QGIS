@@ -38,9 +38,14 @@ if not "%PROGRAMFILES(X86)%"=="" set PF86=%PROGRAMFILES(X86)%
 if "%PF86%"=="" set PF86=%PROGRAMFILES%
 if "%PF86%"=="" (echo PROGRAMFILES not set & goto error)
 
-set VS140COMNTOOLS=%PF86%\Microsoft Visual Studio 14.0\Common7\Tools\
-call "%PF86%\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" %VCARCH%
-path %path%;%PF86%\Microsoft Visual Studio 14.0\VC\bin
+rem set VS140COMNTOOLS=%PF86%\Microsoft Visual Studio 12.0\Common7\Tools\
+set VS140COMNTOOLS=%PF86%\Microsoft Visual Studio\2017\Community\Common7\Tools
+
+REM call "%PF86%\Microsoft Visual Studio 12.0\VC\vcvarsall.bat" %VCARCH%
+call "%PF86%\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvarsall.bat" %VCARCH%
+
+REM path %path%;%PF86%\Microsoft Visual Studio 12.0\VC\bin
+path %path%;%PF86%\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\Hostx64\x64
 
 set GRASS7=
 if exist %OSGEO4W_ROOT%\bin\grass74.bat set GRASS7=%OSGEO4W_ROOT%\bin\grass74.bat

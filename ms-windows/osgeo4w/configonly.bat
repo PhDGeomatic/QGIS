@@ -16,9 +16,9 @@ REM ***************************************************************************
 
 set ARCH=%1
 if "%ARCH%"=="x86" (
-	set CMAKEGEN=Visual Studio 14 2015
+	set CMAKEGEN=Visual Studio 15 2017
 ) else (
-	set CMAKEGEN=Visual Studio 14 2015 Win64
+	set CMAKEGEN=Visual Studio 15 2017 Win64
 	set ARCH=x86_64
 )
 

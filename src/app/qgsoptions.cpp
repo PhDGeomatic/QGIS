@@ -974,6 +974,7 @@ QgsOptions::QgsOptions( QWidget *parent, Qt::WindowFlags fl, const QList<QgsOpti
 
   mLineGhostCheckBox->setChecked( mSettings->value( QStringLiteral( "/qgis/digitizing/line_ghost" ), false ).toBool() );
 
+  mDisableEdgeEditingCheckBox->setChecked(mSettings->value( QStringLiteral("/qgis/digitizing/disable_edge_editing" ), false).toBool());      
   mDefaultZValueSpinBox->setValue(
     mSettings->value( QStringLiteral( "/qgis/digitizing/default_z_value" ), Qgis::DEFAULT_Z_COORDINATE ).toDouble()
   );
@@ -1591,6 +1592,7 @@ void QgsOptions::saveOptions()
   mSettings->setValue( QStringLiteral( "/qgis/digitizing/fill_color_alpha" ), digitizingColor.alpha() );
 
   settings.setValue( QStringLiteral( "/qgis/digitizing/line_ghost" ), mLineGhostCheckBox->isChecked() );
+  settings.setValue( QStringLiteral( "/qgis/digitizing/disable_edge_editing"), mDisableEdgeEditingCheckBox->isChecked());     
 
   mSettings->setValue( QStringLiteral( "/qgis/digitizing/default_z_value" ), mDefaultZValueSpinBox->value() );
 

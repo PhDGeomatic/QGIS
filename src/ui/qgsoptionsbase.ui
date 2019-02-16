@@ -4007,6 +4007,13 @@ The bigger the number, the faster zooming with the mouse wheel will be.</string>
                     </property>
                    </widget>
                   </item>
+                  <item row="2" column="0" colspan="7">
+                    <widget class="QCheckBox" name="mDisableEdgeEditingCheckBox">
+                     <property name="text">
+                      <string>Disable edges editing</string>
+                     </property>
+                    </widget>
+                   </item>                                     
                  </layout>
                 </widget>
                </item>
@@ -5677,6 +5684,7 @@ p, li { white-space: pre-wrap; }
   <tabstop>mLineColorToolButton</tabstop>
   <tabstop>mFillColorToolButton</tabstop>
   <tabstop>mLineGhostCheckBox</tabstop>
+  <tabstop>mDisableEdgeEditingCheckBox</tabstop>                                              
   <tabstop>mSnappingEnabledDefault</tabstop>
   <tabstop>mDefaultSnapModeComboBox</tabstop>
   <tabstop>mDefaultSnappingToleranceSpinBox</tabstop>

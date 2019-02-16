@@ -1119,7 +1119,14 @@ void QgsVertexTool::mouseMoveNotDragging( QgsMapMouseEvent *e )
     mEdgeCenterMarker->setVisible( !isCircularEdge );  // currently not supported for circular edges
     mEdgeCenterMarker->update();
 
-    mEdgeBand->setVisible( !isNearCenter );
+    // disable the edge highlight if the edge editing is disabled
+    QgsSettings settings;
+    bool disableEdgeEditing = settings.value("/qgis/digitizing/disable_edge_editing", false).toBool();
+    if (disableEdgeEditing)
+      mEdgeBand->setVisible(false);
+    else
+      mEdgeBand->setVisible(!isNearCenter);
+
   }
   else
   {
@@ -1438,7 +1445,15 @@ void QgsVertexTool::startDragging( QgsMapMouseEvent *e )
     if ( isNearCenter )
       startDraggingAddVertex( m );
     else
-      startDraggingEdge( m, mapPoint );
+    {
+      // don't start dragging edge if the edge editing in disabled
+      QgsSettings settings;
+      bool disableEdgeEditing = settings.value("/qgis/digitizing/disable_edge_editing", false).toBool();
+      if (!disableEdgeEditing)
+      {
+        startDraggingEdge(m, mapPoint);
+      }
+    }
   }
   else   // vertex
   {
